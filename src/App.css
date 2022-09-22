@@ -1,0 +1,18 @@
+.main__wrapper1 {
+    display: flex;
+    height: 100vh;
+    border-radius: 12px;
+    flex-direction: column;
+}
+
+.calendar-container2{
+    margin: auto;
+    border-radius: 12px;
+}
+
+.calendar-container1{
+    box-shadow: 20px 20px 50px rgb(168, 168, 168);
+    /* margin: auto; */
+    width: 58vw;
+    display: flex;
+}
