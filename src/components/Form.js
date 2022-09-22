@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react'
 import styles from './Form.module.css'
 
 function Form(props) {
-    let [task, setTask] = useState('')
-    let [phoneNumber, setPhoneNumber] = useState('')
     let [emailNotValid, setEmailNotValid] = useState(false)
     let [phoneNotValid, setPhoneNotValid] = useState(false)
     let [nameNotValid, setNameNotValid] = useState(false)
 
     useEffect(() => {
-        if (task.trim().length >= 1 && phoneNumber.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
+        if (props.name.trim().length >= 1 && props.phoneNumber.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
             props.setIsActive(true)
         } else {
             props.setIsActive(false)
         }
-    }, [props, task, phoneNumber, props.email])
+    }, [props, props.name, props.phoneNumber, props.email])
 
     useEffect(() => {
         if (props.email.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
@@ -23,13 +21,13 @@ function Form(props) {
     }, [props.email])
 
     let textChangeHandler = (e) => {
-        setTask(e.target.value)
+        props.setName(e.target.value)
         // props.onClick(task)
         setNameNotValid(false)
     }
 
     let numberChangeHandler = (e) => {
-        setPhoneNumber(e.target.value)
+        props.setPhoneNumber(e.target.value)
         setPhoneNotValid(false)
     }
 
@@ -41,7 +39,7 @@ function Form(props) {
 
     }
     let textBlurHandler = () => {
-        if (task.trim().length === 0) {
+        if (props.name.trim().length === 0) {
             setNameNotValid(true)
         } else {
             setNameNotValid(false)
@@ -55,7 +53,7 @@ function Form(props) {
         }
     }
     let phoneBlurHandler = () => {
-        if (phoneNumber.trim().length === 0) {
+        if (props.phoneNumber.trim().length === 0) {
             setPhoneNotValid(true)
         } else {
             setPhoneNotValid(false)
@@ -77,7 +75,7 @@ function Form(props) {
 
                             type='text'
                             placeholder='Please Enter your name'
-                            value={task}
+                            value={props.name}
                             onChange={textChangeHandler}
                             onBlur={textBlurHandler}
                             required
@@ -90,7 +88,7 @@ function Form(props) {
 
                             type='number'
                             placeholder='Please Enter your phone number'
-                            value={phoneNumber}
+                            value={props.phoneNumber}
                             onChange={numberChangeHandler}
                             onBlur={phoneBlurHandler}
                             required

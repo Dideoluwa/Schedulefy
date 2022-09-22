@@ -6,14 +6,14 @@ import styles from './Nav.module.css'
 function Nav(props) {
     let [text, setText] = useState('')
     let { pathname } = useLocation()
-
+    let txt = props.loading ? 'Submitting...' : 'Submit'
     useEffect(() => {
         if (pathname === '/form') {
-            setText('Submit')
+            setText(txt)
         } else {
             setText('Next')
         }
-    }, [pathname])
+    }, [pathname , txt])
 
     return (
         <div className={styles.body}>

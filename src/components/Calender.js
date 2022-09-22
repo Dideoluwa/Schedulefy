@@ -15,7 +15,7 @@ function Calender(props) {
                 <Outlet />
                 </div>
             </div>
-            <Nav onSubmit = {props.onSubmit} onClickFor={props.onClickFor} onClick={props.onClick} disabled={props.disabled} />
+            <Nav loading = {props.loading} onSubmit = {props.onSubmit} onClickFor={props.onClickFor} onClick={props.onClick} disabled={props.disabled} />
         </div>
     )
 }
