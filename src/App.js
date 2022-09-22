@@ -16,7 +16,6 @@ function App() {
   let [timer, setTimer] = useState('00:00')
   // let [soundPlay, setSoundPlay] = useState(false)
   // let [currTime, setCurrTime] = useState('')
-  // let [currDate, setCurrDate] = useState('')
   let [dates, setDates] = useState('')
   let [show, setShow] = useState(false)
   let [email, setEmail] = useState('')

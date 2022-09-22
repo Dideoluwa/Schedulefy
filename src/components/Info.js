@@ -1,9 +1,6 @@
 import React from 'react'
 import styles from './Info.module.css'
 function Info(props) {
-
-    // let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    // let day = days[props.date.getDay()]
     return (
         <div className={styles.body}>
             <div className={styles.body_header}>
