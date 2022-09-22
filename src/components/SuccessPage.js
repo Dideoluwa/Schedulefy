@@ -6,6 +6,7 @@ function SuccessPage(props) {
     let navigate = useNavigate()
     let homeNavigateHandler = () =>{
        navigate('/')
+       props.setEmail('')
     }
     return (
         <div className={styles.body}>

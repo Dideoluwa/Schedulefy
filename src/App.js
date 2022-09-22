@@ -48,18 +48,6 @@ function App() {
       clearInterval(timers);
     };
   }, [date]);
-
-  useEffect(() => {
-    // if (timer === currTime && currDate === dates) {
-    //   setSoundPlay(true)
-    // } else {
-    //   setSoundPlay(false)
-    // }
-    // console.log(timer === currTime && currDate === dates)
-  }, [timer, date, dates])
-  // if (soundPlay) {
-  //   demo.play();
-  // }
   let navigate = useNavigate()
   let navigateBackHAndler = () => {
     if (pathname === '/final') {
@@ -73,7 +61,7 @@ function App() {
     if (pathname === '/form') {
       // console.log(nameInput)
       setLoading(true)
-      sendMail({ name, email, dates ,timer }).then(data => {
+      sendMail({ name, email, dates, timer }).then(data => {
         if (data.err) {
           console.log(data.err)
         } else {
@@ -82,7 +70,6 @@ function App() {
           navigate('/final')
           setName('')
           setPhoneNumber('')
-          setEmail('')
         }
       })
     } else {
@@ -98,7 +85,7 @@ function App() {
               <Route path='/' element={<Schedule show={show} setShow={setShow} isActive={isActive} setIsActive={setIsActive} timer={timer} setTimer={setTimer} time={time} date={date} onChange={setDate} />} />
               <Route path='form' element={<Form name={name} setName={setName} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} email={email} setEmail={setEmail} onClick={navigateForwardHAndler} setIsActive={setIsActive} />} />
             </Route>
-            <Route path='/final' element={<SuccessPage email={email} dates={dates} timer={timer} />} />
+            <Route path='/final' element={<SuccessPage setEmail = {setEmail} email={email} dates={dates} timer={timer} />} />
           </Routes>
           {/* <form onSubmit={formSubmitHandler}>
             <label>Enter your name:
