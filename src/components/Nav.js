@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
-// import { Link, useNavigate } from 'react-router-dom'
 import styles from './Nav.module.css'
 
 function Nav(props) {

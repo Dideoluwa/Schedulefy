@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router'
 import styles from './SuccessPage.module.css'
 
 function SuccessPage(props) {
+    let text = props.loading ? 'Resending...' : 'Resend Email'
     let navigate = useNavigate()
     let homeNavigateHandler = () =>{
        navigate('/')
        props.setEmail('')
+       props.setPhoneNumber('')
+       props.setName('')
     }
     return (
         <div className={styles.body}>
@@ -37,8 +40,8 @@ function SuccessPage(props) {
                 <button
                 onClick={homeNavigateHandler}
                 >Get back home</button>
-                <div>
-                    <p>Resend Email</p>
+                <div onClick={props.onClick}>
+                    <p>{text}</p>
                 </div>
             </div>
         </div>

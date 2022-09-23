@@ -42,6 +42,18 @@ function App() {
     }
   }
 
+  let resendMessageHandler = () =>{
+    setLoading(true)
+    sendMail({ name, email, dates, timer }).then(data => {
+      if (data.err) {
+        console.log(data.err)
+      } else {
+        console.log(data)
+        setLoading(false)
+      }
+    })
+  }
+
   let navigateForwardHAndler = () => {
     if (pathname === '/form') {
       setLoading(true)
@@ -52,8 +64,6 @@ function App() {
           console.log(data)
           setLoading(false)
           navigate('/final')
-          setName('')
-          setPhoneNumber('')
         }
       })
     } else {
@@ -68,7 +78,7 @@ function App() {
             <Route path='/' element={<Schedule show={show} setShow={setShow} isActive={isActive} setIsActive={setIsActive} timer={timer} setTimer={setTimer} time={time} date={date} onChange={setDate} />} />
             <Route path='form' element={<Form name={name} setName={setName} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} email={email} setEmail={setEmail} onClick={navigateForwardHAndler} setIsActive={setIsActive} />} />
           </Route>
-          <Route path='/final' element={<SuccessPage setEmail={setEmail} email={email} dates={dates} timer={timer} />} />
+          <Route path='/final' element={<SuccessPage loading={loading} onClick = {resendMessageHandler} setName={setName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} email={email} dates={dates} timer={timer} />} />
         </Routes>
       </div>
     </div>
