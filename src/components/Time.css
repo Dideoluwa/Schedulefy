@@ -35,13 +35,21 @@
     margin-left: 20px;
 }
 
+@media only screen and (max-width: 912px) {
+    .calendar-container__time__inner {
+        height: 32vh;
+    } 
+}
+
 @media only screen and (max-width: 540px) {
     .calendar-container__time__inner {
         width: 100%;
+        height: 50vh;
     }
 
     .calendar-container__time {
         margin-left: 10px;
+        width: 100%;
     }
 
     .calendar-container__time .calendar-container__time__inner h1 {

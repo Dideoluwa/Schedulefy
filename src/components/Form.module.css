@@ -6,7 +6,6 @@
     max-width: 100%;
     border-left: 0.5px solid black;
     animation: fadeIn 0.7s ease-out;
-    /* background-color: black; */
 }
 
 .header h1 {
@@ -85,13 +84,27 @@
     }
 }
 
+@media only screen and (max-width: 912px) {
+    .body {
+        display: flex;
+        flex: 1;
+        height: 35vh;
+        flex-direction: column;
+        max-width: 100%;
+    }
+}
+
 @media only screen and (max-width: 540px) {
     .body {
         display: flex;
         flex: 1;
+        height: 69vh;
         max-width: 100%;
         border-left: none;
         padding: 12px;
+    }
+    .form form{
+        margin-bottom: 120px;
     }
     .form form div{
         margin: 0px;
@@ -101,6 +114,7 @@
     }
     .header{
         margin: 0px 0px;
+        /* background-color: red; */
     }
     .header h4{
         font-size: 13px;

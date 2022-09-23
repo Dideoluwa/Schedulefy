@@ -126,7 +126,7 @@
     }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 912px){
     .body {
         padding: 12px;
     }
@@ -136,7 +136,13 @@
         margin-top: 25px;
         width: 100%;
     }
+    .schedule {
+        width: 70%;
+        padding: 5px 10px;
+    }
+}
 
+@media only screen and (max-width: 540px) {
     .header h2 {
         text-align: center;
         font-size: 18px;

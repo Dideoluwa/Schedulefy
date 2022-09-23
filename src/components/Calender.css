@@ -230,6 +230,23 @@
     background-color: #e6e6e6;
 }
 
+@media only screen and (max-width: 912px) {
+    /* .calender_wrapper__inner__wrapper {
+        flex-direction: column;
+    } */
+
+    .calender_wrapper__inner__wrapper__info {
+        max-width: 30%;
+    }
+
+    .calender_wrapper__inner__wrapper__outlet {
+        width: 70%;
+    }
+    .calender_wrapper{
+        height: 50%;
+    }
+}
+
 
 @media only screen and (max-width: 540px) {
     .calender_wrapper__inner__wrapper {
