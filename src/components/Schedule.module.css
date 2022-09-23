@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    animation: fadeIn 0.7s ease-out;
+    /* background-color: black; */
+}
+
+.wrapper__init {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    border-left: 0.5px solid #a0a096;
+    border-right: 0.5px solid #a0a096;
+    flex: 1;
+    width: 100%;
+    max-width: 70%;
+}
+
+.wrapper_calender {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(60%);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .wrapper__init {
+        max-width: 80%;
+    }
+}

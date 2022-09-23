@@ -39,3 +39,17 @@
     font-size: 14px;
     border-radius: 5px;
 }
+
+@media only screen and (max-width: 540px) {
+    .body_inner {
+        margin: 12px 5px;
+    }
+    .next  button {
+        padding: 4px 21px;
+        font-size: 17px;
+    }
+    .back {
+        padding: 4px 21px;
+        font-size: 12px;
+    }
+}

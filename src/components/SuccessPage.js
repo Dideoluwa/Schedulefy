@@ -25,11 +25,11 @@ function SuccessPage(props) {
             </div>
             <div className={styles.schedule}>
                 <div>
-                    <p>Date</p>
-                    <p>{props.dates}</p>
+                    <p>Date:</p>
+                    <p>{props.dates}.</p>
                 </div>
                 <div>
-                    <p>Time</p>
+                    <p>Time:</p>
                     <p>{props.timer}</p>
                 </div>
             </div>

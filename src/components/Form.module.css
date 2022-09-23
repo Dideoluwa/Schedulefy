@@ -1,20 +1,19 @@
 .body {
-    /* background-color: aqua; */
     display: flex;
     flex: 1;
     height: 54vh;
     flex-direction: column;
     max-width: 100%;
-    width: 40vw;
     border-left: 0.5px solid black;
     animation: fadeIn 0.7s ease-out;
+    /* background-color: black; */
 }
 
-.header h1{
+.header h1 {
     font-size: 25px;
 }
 
-.header h4{
+.header h4 {
     font-size: 16px;
     color: rgb(156, 163, 171);
 }
@@ -44,7 +43,6 @@
 }
 
 .form {
-    /* background-color: red; */
     margin: auto;
     width: 100%;
 }
@@ -84,5 +82,30 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .body {
+        display: flex;
+        flex: 1;
+        max-width: 100%;
+        border-left: none;
+        padding: 12px;
+    }
+    .form form div{
+        margin: 0px;
+        margin-top: 12px;
+        padding: 0px;
+        /* background-color: red; */
+    }
+    .header{
+        margin: 0px 0px;
+    }
+    .header h4{
+        font-size: 13px;
+    }
+    .header h1{
+        font-size: 20px;
     }
 }

@@ -6,12 +6,12 @@ import Nav from './Nav'
 
 function Calender(props) {
     return (
-        <div className='main__wrapper'>
-            <div className="calendar-container">
-                <div className='calender__info'>
+        <div className='calender_wrapper'>
+            <div className="calender_wrapper__inner__wrapper">
+                <div className='calender_wrapper__inner__wrapper__info'>
                     <Info dates={props.dates} show={props.show} timer={props.timer} />
                 </div>
-                <div className='outlet'>
+                <div className='calender_wrapper__inner__wrapper__outlet'>
                 <Outlet />
                 </div>
             </div>

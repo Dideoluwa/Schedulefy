@@ -3,20 +3,24 @@
 }
 
 .date_show div h4 {
-    font-size: 13px;
+    font-size: 15px;
     color: rgb(72, 72, 72);
 }
 
 .date_show div {
-    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 20px;
 }
 
 .date {
-   opacity: 0;
+    display: none;
 }
 
-.date_show{
+.date_show {
     display: flex;
+    width: 100%;
     flex-direction: column;
     background-color: rgb(245, 249, 249);
     margin-right: 14px;
@@ -34,6 +38,7 @@
         opacity: 0;
         transform: translateY(30%);
     }
+
     100% {
         opacity: 1;
     }
@@ -49,4 +54,30 @@
     font-size: 18px;
     margin: 0px 5px;
     color: rgb(156, 163, 171);
+}
+
+@media only screen and (max-width: 540px) {
+    .body {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .date_show {
+        flex-direction: row;
+    }
+
+    .body h1 {
+        font-size: 18px;
+    }
+
+    .body h2 {
+        font-size: 13px;
+    }
+    .date_show div h3{
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .date_show div h4{
+        font-size: 12px;
+    }
 }
