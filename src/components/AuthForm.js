@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './AuthForm.module.css'
+const dotenv = require('dotenv');
+dotenv.config()
 let key = process.env.REACT_APP_KEY
 
 function AuthForm() {
