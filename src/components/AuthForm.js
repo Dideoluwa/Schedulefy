@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from './AuthForm.module.css'
 const dotenv = require('dotenv');
 dotenv.config()
-let key = process.env.REACT_APP_KEY
+// let key = process.env.REACT_APP_KEY
 
 function AuthForm() {
     let [isLogin, setIsLogin] = useState(true)
@@ -33,8 +33,8 @@ function AuthForm() {
     }
     let submitHandler = (e) => {
         e.preventDefault()
-        let url1 = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`
-        let url2 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`
+        let url1 = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDZhlPg41S1YCUcwLFa9Ia5FRvL1NiTlno`
+        let url2 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDZhlPg41S1YCUcwLFa9Ia5FRvL1NiTlno`
         if (!isLogin) {
             let sigUpHandler = async () => {
                 let res = await fetch(url1, {
