@@ -3,6 +3,7 @@ import Calender from './components/Calender'
 import './App.css'
 import { sendMail } from './components/api/Mail'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Route, Routes, useLocation, Navigate } from 'react-router'
 import Form from './components/Form'
 import Schedule from './components/Schedule'
@@ -35,6 +36,7 @@ function App() {
       clearInterval(timers);
     };
   }, [date]);
+  let loggedIn = useSelector(state => state.auth.isLoggedIn)
   let navigate = useNavigate()
   let navigateBackHAndler = () => {
     if (pathname === '/final') {
@@ -74,15 +76,15 @@ function App() {
   }
   return (
     <div className='main__wrapper1'>
-    <TopNav />
+      <TopNav />
       <div className='calendar-container1'>
         <Routes>
-          <Route path='/' element={<Calender loading={loading} onClickFor={navigateForwardHAndler} onClick={navigateBackHAndler} disabled={isActive} show={show} dates={dates} timer={timer} />}>
+          <Route path='/' element={(loggedIn && <Calender loading={loading} onClickFor={navigateForwardHAndler} onClick={navigateBackHAndler} disabled={isActive} show={show} dates={dates} timer={timer} />) || (!loggedIn && <Navigate to='/auth' />)}>
             <Route path='/' element={<Schedule show={show} setShow={setShow} isActive={isActive} setIsActive={setIsActive} timer={timer} setTimer={setTimer} time={time} date={date} onChange={setDate} />} />
-            <Route path='form' element={<Form name={name} setName={setName} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} email={email} setEmail={setEmail} onClick={navigateForwardHAndler} setIsActive={setIsActive} />} />
+            <Route path='form' element={(loggedIn && <Form name={name} setName={setName} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} email={email} setEmail={setEmail} onClick={navigateForwardHAndler} setIsActive={setIsActive} />) || (!loggedIn && <Navigate to='/auth' />)} />
           </Route>
-          <Route path='auth' element={<AuthForm />} />
-          <Route path='/final' element={<SuccessPage loading={loading} onClick={resendMessageHandler} setName={setName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} email={email} dates={dates} timer={timer} />} />
+          {!loggedIn && <Route path='auth' element={<AuthForm />} />}
+          {loggedIn && <Route path='/final' element={<SuccessPage loading={loading} onClick={resendMessageHandler} setName={setName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} email={email} dates={dates} timer={timer} />} />}
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </div>

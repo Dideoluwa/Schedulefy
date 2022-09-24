@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import { authActions } from './redux-store/Index';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './AuthForm.module.css'
 const dotenv = require('dotenv');
@@ -12,7 +14,10 @@ function AuthForm() {
     let [password, setPassWord] = useState('')
     let [confirmPassword, setConfirmPassword] = useState('')
     let [email, setEmail] = useState('')
+    let [loading, setLoading] = useState(false)
     let [name, setName] = useState('')
+
+    let dispatch = useDispatch()
 
     let navigate = useNavigate()
 
@@ -37,6 +42,7 @@ function AuthForm() {
         let url2 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDZhlPg41S1YCUcwLFa9Ia5FRvL1NiTlno`
         if (!isLogin) {
             let sigUpHandler = async () => {
+                setLoading(true)
                 let res = await fetch(url1, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -49,6 +55,7 @@ function AuthForm() {
                         'Content-Type': 'application/json'
                     }
                 })
+                setLoading(false)
                 if (res.ok) {
                     toast.success(`Account successfully created, Proceed to login`, {
                         position: "top-left",
@@ -94,6 +101,7 @@ function AuthForm() {
             }
         } else {
             let signInHandler = async () => {
+                setLoading(true)
                 const res = await fetch(url2,
                     {
                         method: 'POST',
@@ -107,14 +115,13 @@ function AuthForm() {
                         }
                     }
                 )
+                setLoading(false)
                 if (res.ok) {
                     let data = await res.json()
                     navigate('/')
-                    console.log(data)
-                    // dispatch(authActions.login(data))
+                    dispatch(authActions.login(data))
                 } else {
                     let data = await res.json()
-                    console.log(data)
                     toast.error(data.error.message, {
                         position: "top-left",
                         autoClose: 5000,
@@ -169,7 +176,7 @@ function AuthForm() {
                         id='confirmPassword'
                         required />
                 </div>}
-                <div className={styles.actions}>
+                {!loading && <div className={styles.actions}>
                     <button>{isLogin ? 'Login' : 'Create Account'}</button>
                     <button
                         type='button'
@@ -178,9 +185,7 @@ function AuthForm() {
                     >
                         {isLogin ? 'Create new account' : 'Login with existing account'}
                     </button>
-                    {/* {isLoading && <h4>Loading....</h4>} */}
-                    {/* {isLogin ? '' : <h4>{message}</h4>} */}
-                </div>
+                </div>}
             </form>
         </section>
     )
