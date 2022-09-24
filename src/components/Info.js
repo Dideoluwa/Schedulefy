@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './Info.module.css'
+import { useSelector } from 'react-redux'
 function Info(props) {
+    let name = useSelector(state => state.auth.name)
     return (
         <div className={styles.body}>
             <div className={styles.body_header}>
-                <h2>Walkthrough</h2>
+                <h2>{name}</h2>
             </div>
             <div className={styles.body_header}>
                 <h1>Schdule a demo</h1>
