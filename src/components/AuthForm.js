@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './AuthForm.module.css'
-let key = process.env.REACT_APP_KEY
+let key = process.env.KEY
 
 function AuthForm() {
     let [isLogin, setIsLogin] = useState(true)
