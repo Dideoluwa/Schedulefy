@@ -3,10 +3,12 @@ import Calender from './components/Calender'
 import './App.css'
 import { sendMail } from './components/api/Mail'
 import { useNavigate } from 'react-router-dom'
-import { Route, Routes, useLocation } from 'react-router'
+import { Route, Routes, useLocation, Navigate } from 'react-router'
 import Form from './components/Form'
 import Schedule from './components/Schedule'
 import SuccessPage from './components/SuccessPage'
+import AuthForm from './components/AuthForm'
+import TopNav from './components/TopNav'
 
 
 function App() {
@@ -42,7 +44,7 @@ function App() {
     }
   }
 
-  let resendMessageHandler = () =>{
+  let resendMessageHandler = () => {
     setLoading(true)
     sendMail({ name, email, dates, timer }).then(data => {
       if (data.err) {
@@ -72,13 +74,16 @@ function App() {
   }
   return (
     <div className='main__wrapper1'>
+    <TopNav />
       <div className='calendar-container1'>
         <Routes>
           <Route path='/' element={<Calender loading={loading} onClickFor={navigateForwardHAndler} onClick={navigateBackHAndler} disabled={isActive} show={show} dates={dates} timer={timer} />}>
             <Route path='/' element={<Schedule show={show} setShow={setShow} isActive={isActive} setIsActive={setIsActive} timer={timer} setTimer={setTimer} time={time} date={date} onChange={setDate} />} />
             <Route path='form' element={<Form name={name} setName={setName} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} email={email} setEmail={setEmail} onClick={navigateForwardHAndler} setIsActive={setIsActive} />} />
           </Route>
-          <Route path='/final' element={<SuccessPage loading={loading} onClick = {resendMessageHandler} setName={setName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} email={email} dates={dates} timer={timer} />} />
+          <Route path='auth' element={<AuthForm />} />
+          <Route path='/final' element={<SuccessPage loading={loading} onClick={resendMessageHandler} setName={setName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} email={email} dates={dates} timer={timer} />} />
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </div>
     </div>
