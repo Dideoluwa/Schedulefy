@@ -118,6 +118,7 @@ function AuthForm() {
                 setLoading(false)
                 if (res.ok) {
                     let data = await res.json()
+                    console.log(data)
                     navigate('/')
                     dispatch(authActions.login(data))
                 } else {

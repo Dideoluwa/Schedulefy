@@ -10,3 +10,5 @@ export const sendMail = (data) => {
         console.log("response", response); return response.json();
     }).catch(err => console.log(err))
 }
+
+

@@ -7,6 +7,7 @@ const defaultAuthState = {
     token: '',
     isLoggedIn: false,
     name: '',
+    email : '',
     expirationTime: null
 }
 
@@ -22,11 +23,13 @@ let authSlice = createSlice({
             state.isLoggedIn = true
             state.name = payload.displayName
             state.expirationTime = expTime
+            state.email = payload.email
         },
         logout(state) {
             state.token = ''
             state.isLoggedIn = false
             state.name = ''
+            state.email = ''
             state.expirationTime = null
         }
     }

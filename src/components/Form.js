@@ -3,16 +3,16 @@ import styles from './Form.module.css'
 
 function Form(props) {
     let [emailNotValid, setEmailNotValid] = useState(false)
-    let [phoneNotValid, setPhoneNotValid] = useState(false)
+    let [purposeNotValid, setPurposeNotValid] = useState(false)
     let [nameNotValid, setNameNotValid] = useState(false)
 
     useEffect(() => {
-        if (props.name.trim().length >= 1 && props.phoneNumber.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
+        if (props.name.trim().length >= 1 && props.purpose.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
             props.setIsActive(true)
         } else {
             props.setIsActive(false)
         }
-    }, [props, props.name, props.phoneNumber, props.email])
+    }, [props, props.name, props.purpose, props.email])
 
     useEffect(() => {
         if (props.email.trim().length >= 1 && props.email.includes('@') && props.email.includes('.com')) {
@@ -22,18 +22,16 @@ function Form(props) {
 
     let textChangeHandler = (e) => {
         props.setName(e.target.value)
-        // props.onClick(task)
         setNameNotValid(false)
     }
 
-    let numberChangeHandler = (e) => {
-        props.setPhoneNumber(e.target.value)
-        setPhoneNotValid(false)
+    let purposeChangeHandler = (e) => {
+        props.setPurpose(e.target.value)
+        setPurposeNotValid(false)
     }
 
     let emailChangeHandler = (e) => {
         props.setEmail(e.target.value)
-        // setEmailNotValid(false)
     }
     let formSubmitHandler = () => {
 
@@ -52,11 +50,11 @@ function Form(props) {
             setEmailNotValid(false)
         }
     }
-    let phoneBlurHandler = () => {
-        if (props.phoneNumber.trim().length === 0) {
-            setPhoneNotValid(true)
+    let purposeBlurHandler = () => {
+        if (props.purpose.trim().length === 0) {
+            setPurposeNotValid(true)
         } else {
-            setPhoneNotValid(false)
+            setPurposeNotValid(false)
         }
     }
     return (
@@ -83,17 +81,17 @@ function Form(props) {
                         {nameNotValid && <p>Name must be inputed</p>}
                     </div>
                     <div>
-                        <label>Phone Number:</label>
+                        <label>Purpose Of meeting:</label>
                         <input
 
-                            type='number'
-                            placeholder='Please Enter your phone number'
-                            value={props.phoneNumber}
-                            onChange={numberChangeHandler}
-                            onBlur={phoneBlurHandler}
+                            type='text'
+                            placeholder='Please Enter meeting purpose'
+                            value={props.purpose}
+                            onChange={purposeChangeHandler}
+                            onBlur={purposeBlurHandler}
                             required
                         />
-                        {phoneNotValid && <p>Phone number must be inputed</p>}
+                        {purposeNotValid && <p>Purpose must be inputed</p>}
                     </div>
                     <div>
                         <label>Email:</label>
