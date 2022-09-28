@@ -56,6 +56,7 @@ function AuthForm() {
                     }
                 })
                 setLoading(false)
+                setIsLogin(true)
                 if (res.ok) {
                     toast.success(`Account successfully created, Proceed to login`, {
                         position: "top-left",

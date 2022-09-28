@@ -1,5 +1,5 @@
 export const sendMail = (data) => {
-    return fetch('https://emailodejs.herokuapp.com/api/sendmail', {
+    return fetch('http://cl8lqrgqf00013b6cpumpr1xb.demo.coolify.io/api/sendmail', {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -12,3 +12,4 @@ export const sendMail = (data) => {
 }
 
 
+// https://emailodejs.herokuapp.com

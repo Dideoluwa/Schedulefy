@@ -49,6 +49,7 @@ function App() {
 
   let resendMessageHandler = () => {
     setLoading(true)
+    // setIsActive(false)
     sendMail({ name, purpose, userEmail, email, dates, timer }).then(data => {
       if (data.err) {
         console.log(data.err)
@@ -57,10 +58,12 @@ function App() {
         setLoading(false)
       }
     })
+    // setIsActive(true)
   }
 
   let navigateForwardHAndler = () => {
     if (pathname === '/form') {
+      setIsActive(false)
       setLoading(true)
       sendMail({ name, purpose, userEmail, email, dates, timer }).then(data => {
         if (data.err) {
@@ -71,6 +74,7 @@ function App() {
           navigate('/final')
         }
       })
+      setIsActive(true)
     } else {
       navigate('/form')
     }
