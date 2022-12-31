@@ -1,5 +1,5 @@
 export const sendMail = (data) => {
-    return fetch('https://emailodejs.herokuapp.com/api/sendmail', {
+    return fetch('https://backendemail-production.up.railway.app/api/sendmail', {
         method: "POST",
         headers: {
             Accept: "application/json",
